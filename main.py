@@ -1,7 +1,11 @@
 import feedparser, time, os.path
+from espeakng import ESpeakNG
 
 USERNAME = "joachimveran06"   
-PASSWORD = "StBarth2002"     
+PASSWORD = "StBarth2002"
+
+esng = ESpeakNG(voice='fr')
+esng.say("Bonjour.",sync = True)
 
 while True:
 
@@ -28,11 +32,13 @@ while True:
             f = open('emails.txt', 'w')
             f.write(str(last_mails))
 
-            author = str(feedparser.parse("https://" + USERNAME + ":" + PASSWORD +"@mail.google.com/gmail/feed/atom").entries[0].author)
-            objet = str(feedparser.parse("https://" + USERNAME + ":" + PASSWORD +"@mail.google.com/gmail/feed/atom").entries[0].title)
+            author = "Expéditeur : " + str(feedparser.parse("https://" + USERNAME + ":" + PASSWORD +"@mail.google.com/gmail/feed/atom").entries[0].author)
+            objet = "Objet : " + str(feedparser.parse("https://" + USERNAME + ":" + PASSWORD +"@mail.google.com/gmail/feed/atom").entries[0].title)
             
-            print("expéditeur : ", author)
-            print("objet : ", objet)
+            print(author)
+            print(objet)
+            esng.say(author, sync = True)
+            esng.say(objet, sync = True)
             #afficher et faire lire "'expéditeur : ' author"
             #afficher et faire lire "'objet : ' objet"
 
