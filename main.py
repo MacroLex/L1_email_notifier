@@ -1,7 +1,7 @@
 import feedparser, time, os.path, espeakng, sys, pygame
 
-USERNAME = "joachimveran06"   
-PASSWORD = "StBarth2002"
+USERNAME = "test"   
+PASSWORD = "test"
 
 esng = espeakng.Speaker()
 esng.voice = 'fr'
